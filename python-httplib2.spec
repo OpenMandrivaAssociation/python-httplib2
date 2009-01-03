@@ -3,17 +3,15 @@
 Name:		python-httplib2
 Summary:	Python HTTP library module
 Version:	0.4.0
-Release:	%{mkrel 2} 
+Release:	%mkrel 3
 Source0:	http://httplib2.googlecode.com/files/%{fname}-%{version}.tar.gz
 URL:		http://code.google.com/p/httplib2
 Group:		System/Libraries
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	MIT
 BuildArch:	noarch
-BuildRequires:	python
-BuildRequires:	python-devel
 BuildRequires:	python-setuptools
-Requires:	python
+%py_requires -d
 
 %description
 A comprehensive HTTP client library that supports many features left

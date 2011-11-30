@@ -2,8 +2,8 @@
 
 Name:		python-httplib2
 Summary:	Python HTTP library module
-Version:	0.6.0
-Release:	%mkrel 3
+Version:	0.7.2
+Release:	1
 Source0:	http://httplib2.googlecode.com/files/%{fname}-%{version}.tar.gz
 URL:		http://code.google.com/p/httplib2
 Group:		System/Libraries

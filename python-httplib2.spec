@@ -27,15 +27,8 @@ out of other HTTP libraries.
 %{__rm} -rf %{buildroot}
 %{__python} setup.py install --root=%{buildroot} --compile --optimize=2
 
-%post
-
-%postun
-
-%clean
-%{__rm} -rf %{buildroot}
-
 %files
 %defattr(-,root,root)
-%doc README
+	%doc README
 %{py_puresitedir}/%{fname}
 %{py_puresitedir}/%{fname}-%{version}-py%{pyver}.egg-info

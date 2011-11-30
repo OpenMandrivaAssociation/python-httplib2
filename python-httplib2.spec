@@ -1,4 +1,5 @@
 %define fname	httplib2
+%define pyver	2.7
 
 Name:		python-httplib2
 Summary:	Python HTTP library module
@@ -7,7 +8,6 @@ Release:	1
 Source0:	http://httplib2.googlecode.com/files/%{fname}-%{version}.tar.gz
 URL:		http://code.google.com/p/httplib2
 Group:		System/Libraries
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	MIT
 BuildArch:	noarch
 BuildRequires:	python-setuptools
@@ -31,4 +31,4 @@ export PYTHONPATH="%{buildroot}%{_libdir}/python%{pyver}/site-packages"
 %defattr(-,root,root)
 	%doc README
 %{py_puresitedir}/%{fname}
-#% {py_puresitedir}/ % {fname}- % {version}-py% {pyver}.egg-info
+%{py_puresitedir}/%{fname}-%{version}-py%{pyver}.egg-info

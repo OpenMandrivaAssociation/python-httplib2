@@ -31,4 +31,4 @@ export PYTHONPATH="%{buildroot}%{_libdir}/python%{pyver}/site-packages"
 %defattr(-,root,root)
 	%doc README
 %{py_puresitedir}/%{fname}
-%{py_puresitedir}/%{fname}-%{version}-py%{pyver}.egg-info
+#% {py_puresitedir}/ % {fname}- % {version}-py% {pyver}.egg-info

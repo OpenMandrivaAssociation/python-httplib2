@@ -22,10 +22,10 @@ out of other HTTP libraries.
 
 %build
 %{__python} setup.py build
+export PYTHONPATH="%{buildroot}%{_libdir}/python%{pyver}/site-packages"
 
 %install
-%{__rm} -rf %{buildroot}
-%{__python} setup.py install --root=%{buildroot} --compile --optimize=2
+%{__python} setup.py install --root=%{buildroot}
 
 %files
 %defattr(-,root,root)

@@ -23,8 +23,10 @@ out of other HTTP libraries.
 %{__python} setup.py build
 
 %install
-PYTHONDONTWRITEBYTECODE= %{__python} setup.py install --root=%{buildroot} --record=FILE_LIST
+PYTHONDONTWRITEBYTECODE= %{__python} setup.py install --root=%{buildroot}
 
-%files -f FILE_LIST
+%files
 %defattr(-,root,root)
 %doc README
+%py_sitedir/httplib2-*
+%py_sitedir/httplib2/*

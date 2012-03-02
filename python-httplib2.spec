@@ -1,11 +1,10 @@
-%define fname	httplib2
-%define pyver	2.7
+%define module	httplib2
 
 Name:		python-httplib2
-Summary:	Python HTTP library module
-Version:	0.7.2
+Summary:	Comprehensive HTTP client library for Python
+Version:	0.7.3
 Release:	1
-Source0:	http://httplib2.googlecode.com/files/%{fname}-%{version}.tar.gz
+Source0:	http://httplib2.googlecode.com/files/%{module}-%{version}.tar.gz
 URL:		http://code.google.com/p/httplib2
 Group:		System/Libraries
 License:	MIT
@@ -18,17 +17,14 @@ A comprehensive HTTP client library that supports many features left
 out of other HTTP libraries.
 
 %prep
-%setup -q -n %{fname}-%{version}
+%setup -q -n %{module}-%{version}
 
 %build
 %{__python} setup.py build
-export PYTHONPATH="%{buildroot}%{_libdir}/python%{pyver}/site-packages"
 
 %install
-%{__python} setup.py install --root=%{buildroot}
+PYTHONDONTWRITEBYTECODE= %{__python} setup.py install --root=%{buildroot} --record=FILE_LIST
 
-%files
+%files -f FILE_LIST
 %defattr(-,root,root)
-	%doc README
-%{py_puresitedir}/%{fname}
-%{py_puresitedir}/%{fname}-%{version}-py%{pyver}.egg-info
+%doc README

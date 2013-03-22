@@ -1,0 +1,44 @@
+diff -up ./python2/httplib2/__init__.py.orig ./python2/httplib2/__init__.py
+--- ./python2/httplib2/__init__.py.orig	2012-09-11 19:22:30.000000000 +0200
++++ ./python2/httplib2/__init__.py	2012-09-23 12:20:19.242106911 +0200
+@@ -183,8 +183,9 @@ class CertificateHostnameMismatch(SSLHan
+ DEFAULT_MAX_REDIRECTS = 5
+ 
+ # Default CA certificates file bundled with httplib2.
+-CA_CERTS = os.path.join(
+-        os.path.dirname(os.path.abspath(__file__ )), "cacerts.txt")
++#CA_CERTS = os.path.join(
++#        os.path.dirname(os.path.abspath(__file__ )), "cacerts.txt")
++CA_CERTS = "/etc/ssl/certs/ca-bundle.crt"
+ 
+ # Which headers are hop-by-hop headers by default
+ HOP_BY_HOP = ['connection', 'keep-alive', 'proxy-authenticate', 'proxy-authorization', 'te', 'trailers', 'transfer-encoding', 'upgrade']
+@@ -957,11 +958,12 @@ class HTTPSConnectionWithTimeout(httplib
+           list: A list of valid host globs.
+         """
+         if 'subjectAltName' in cert:
+-            return [x[1] for x in cert['subjectAltName']
+-                    if x[0].lower() == 'dns']
+-        else:
+-            return [x[0][1] for x in cert['subject']
+-                    if x[0][0].lower() == 'commonname']
++            # Patch from richardfearn@gmail.com
++	    return [x[1] for x in cert['subjectAltName']
++                if x[0].lower() == "dns"]
++
++        return [x[0][1] for x in cert['subject']
++            if x[0][0].lower() == 'commonname']
+ 
+     def _ValidateCertificateHostname(self, cert, hostname):
+         """Validates that a given hostname is valid for an SSL certificate.
+--- ./setup.py.orig	2012-09-11 19:22:30.000000000 +0200
++++ ./setup.py	2012-09-23 12:23:34.737350441 +0200
+@@ -62,7 +62,6 @@ A comprehensive HTTP client library, ``h
+         """,
+         package_dir=pkgdir,
+         packages=['httplib2'],
+-        package_data={'httplib2': ['*.txt']},
+         classifiers=[
+         'Development Status :: 4 - Beta',
+         'Environment :: Web Environment',
+

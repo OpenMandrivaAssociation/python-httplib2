@@ -2,7 +2,7 @@
 
 Name:		python-httplib2
 Summary:	Comprehensive HTTP client library for Python
-Version:	0.7.4
+Version:	0.7.7
 Release:	1
 Source0:	http://httplib2.googlecode.com/files/%{module}-%{version}.tar.gz
 URL:		http://code.google.com/p/httplib2
@@ -16,61 +16,48 @@ BuildRequires:	python-setuptools
 A comprehensive HTTP client library that supports many features left
 out of other HTTP libraries.
 
+%package -n python3-httplib2
+Summary:        Python 3 HTTP library module
+Group:          System/Libraries
+BuildRequires:  python3
+
+%description -n python3-httplib2
+A comprehensive HTTP client library that supports many features left
+out of other HTTP libraries.
+
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -c
+mv httplib2-%{version} python2
+pushd python2
+%patch0 -p0 -b .certfile
+popd
+cp -r python2 python3
 
 %build
+pushd python2
 %{__python} setup.py build
+popd
+
+pushd python3
+python3 setup.py build
+popd
 
 %install
-PYTHONDONTWRITEBYTECODE= %{__python} setup.py install --root=%{buildroot}
+pushd python2
+PYTHONDONTWRITEBYTECODE= %{__python} setup.py install --root=%{buildroot} --compile --optimize=2
+popd
+
+pushd python3
+PYTHONDONTWRITEBYTECODE= python3 setup.py install --root=%{buildroot} --compile --optimize=2
+popd
 
 %files
-%defattr(-,root,root)
-%doc README
-%py_sitedir/httplib2-*
-%py_sitedir/httplib2/*
+%doc python2/README
+%{py_puresitedir}/%{module}-*
+%{py_puresitedir}/%{module}/*
 
-
-%changelog
-* Sun Mar 18 2012 Lev Givon <lev@mandriva.org> 0.7.4-1
-+ Revision: 785475
-- Update to 0.7.4.
-
-* Fri Mar 02 2012 Lev Givon <lev@mandriva.org> 0.7.3-1
-+ Revision: 781855
-- Update to 0.7.3.
-
-* Wed Nov 30 2011 Alexander Khrukin <akhrukin@mandriva.org> 0.7.2-1
-+ Revision: 735796
-- cooker fix
-- spec file fix in files py-egg removed
-- spec file fix
-- spec file fix
-- version update 0.7.2
-
-* Thu May 05 2011 Oden Eriksson <oeriksson@mandriva.com> 0.6.0-3
-+ Revision: 667937
-- mass rebuild
-
-* Sat Oct 30 2010 Michael Scherer <misc@mandriva.org> 0.6.0-2mdv2011.0
-+ Revision: 590615
-- rebuild for python 2.7
-
-* Fri Jan 08 2010 Emmanuel Andry <eandry@mandriva.org> 0.6.0-1mdv2010.1
-+ Revision: 487795
-- New version 0.6.0
-
-* Sat Jan 03 2009 Funda Wang <fwang@mandriva.org> 0.4.0-3mdv2009.1
-+ Revision: 323729
-- rebuild
-
-* Thu Mar 13 2008 Adam Williamson <awilliamson@mandriva.org> 0.4.0-2mdv2008.1
-+ Revision: 187368
-- requires python
-
-* Wed Mar 12 2008 Adam Williamson <awilliamson@mandriva.org> 0.4.0-1mdv2008.1
-+ Revision: 186995
-- import python-httplib2
-
+%files -n python3-httplib2
+%doc python3/README
+%{py3_puresitedir}/%{module}-*
+%{py3_puresitedir}/%{module}/*
 

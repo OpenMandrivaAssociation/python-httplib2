@@ -3,7 +3,7 @@
 Name:		python-httplib2
 Summary:	Comprehensive HTTP client library for Python
 Version:	0.8
-Release:	1
+Release:	2
 Source0:	http://httplib2.googlecode.com/files/%{module}-%{version}.tar.gz
 URL:		http://code.google.com/p/httplib2
 Group:		System/Libraries
@@ -45,10 +45,12 @@ popd
 %install
 pushd python2
 PYTHONDONTWRITEBYTECODE= %{__python} setup.py install --root=%{buildroot} --compile --optimize=2
+chmod a+r %{buildroot}%{py_puresitedir}/%{module}*egg-info/*
 popd
 
 pushd python3
 PYTHONDONTWRITEBYTECODE= python3 setup.py install --root=%{buildroot} --compile --optimize=2
+chmod a+r %{buildroot}%{py_puresitedir}/%{module}*egg-info/*
 popd
 
 %files

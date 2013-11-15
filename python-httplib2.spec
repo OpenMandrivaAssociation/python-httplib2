@@ -1,13 +1,13 @@
 %define module	httplib2
 
-Name:		python-httplib2
 Summary:	Comprehensive HTTP client library for Python
+Name:		python-httplib2
 Version:	0.8
 Release:	2
-Source0:	http://httplib2.googlecode.com/files/%{module}-%{version}.tar.gz
-URL:		http://code.google.com/p/httplib2
 Group:		System/Libraries
 License:	MIT
+Url:		http://code.google.com/p/httplib2
+Source0:	http://httplib2.googlecode.com/files/%{module}-%{version}.tar.gz
 BuildArch:	noarch
 BuildRequires:	python-setuptools
 %py_requires -d
@@ -17,9 +17,9 @@ A comprehensive HTTP client library that supports many features left
 out of other HTTP libraries.
 
 %package -n python3-httplib2
-Summary:        Python 3 HTTP library module
-Group:          System/Libraries
-BuildRequires:  python3
+Summary:	Python 3 HTTP library module
+Group:		System/Libraries
+BuildRequires:	python3
 
 %description -n python3-httplib2
 A comprehensive HTTP client library that supports many features left

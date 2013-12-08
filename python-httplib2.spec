@@ -10,7 +10,7 @@ Url:		http://code.google.com/p/httplib2
 Source0:	http://httplib2.googlecode.com/files/%{module}-%{version}.tar.gz
 BuildArch:	noarch
 BuildRequires:	python-setuptools
-%py_requires -d
+BuildRequires:  python-devel
 
 %description
 A comprehensive HTTP client library that supports many features left

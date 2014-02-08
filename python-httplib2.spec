@@ -3,7 +3,7 @@
 Name:		python-httplib2
 Summary:	Comprehensive HTTP client library for Python
 Version:	0.8
-Release:	2
+Release:	3
 Source0:	http://httplib2.googlecode.com/files/%{module}-%{version}.tar.gz
 URL:		http://code.google.com/p/httplib2
 Group:		System/Libraries

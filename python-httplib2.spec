@@ -10,7 +10,7 @@ Group:		System/Libraries
 License:	MIT
 BuildArch:	noarch
 BuildRequires:	python-setuptools
-%py_requires -d
+BuildRequires: python-devel
 
 %description
 A comprehensive HTTP client library that supports many features left

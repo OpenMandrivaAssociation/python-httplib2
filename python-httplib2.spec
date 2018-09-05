@@ -47,12 +47,16 @@ popd
 %install
 pushd python2
 PYTHONDONTWRITEBYTECODE= %{__python2} setup.py install --root=%{buildroot} --compile --optimize=2
+%ifnarch aarch64
 chmod a+r %{buildroot}%{py2_puresitedir}/%{module}*egg-info/*
+%endif
 popd
 
 pushd python3
 PYTHONDONTWRITEBYTECODE= %{__python3} setup.py install --root=%{buildroot} --compile --optimize=2
+%ifnarch aarch64
 chmod a+r %{buildroot}%{py3_puresitedir}/%{module}*egg-info/*
+%endif
 popd
 
 %files

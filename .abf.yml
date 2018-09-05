@@ -1,6 +1,2 @@
-removed_sources:
-  httplib2-0.7.4.tar.gz: 91e5cbd92216721cc1cd701f9e83a89a14384961
-  httplib2-0.7.7.tar.gz: 6c5b748676518e1162a10f1c3c63ca960a30a7a0
-  httplib2-0.8.tar.gz: 169815e9417bfe0fdbb74644a3d3b892c0647612
 sources:
-  0.9.tar.gz: c31cf8db65eed3929f664e1a0723eb7cb85d93ae
+  0.9.2.tar.gz: 3a2ba2fb5f6f2c51dd5fcfea7275f484c0a324d4

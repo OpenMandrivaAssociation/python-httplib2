@@ -3,16 +3,16 @@
 Summary:	Comprehensive HTTP client library for Python
 Name:		python-httplib2
 Version:	0.9.2
-Release:	3
+Release:	4
 Group:		System/Libraries
 License:	MIT
 Url:		https://github.com/jcgregorio/httplib2
 Source0:	https://github.com/jcgregorio/httplib2/archive/%{version}.tar.gz
 BuildArch:	noarch
-BuildRequires:	python2-distribute
-BuildRequires:	python3-distribute
+BuildRequires:	python2dist(setuptools)
+BuildRequires:	python3dist(setuptools)
 BuildRequires:  python2-devel
-BuildRequires:	python3-devel
+BuildRequires:	python-devel
 %rename python3-httplib2
 
 %description

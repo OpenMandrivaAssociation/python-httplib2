@@ -2,8 +2,8 @@
 
 Summary:	Comprehensive HTTP client library for Python
 Name:		python-httplib2
-Version:	0.22.0
-Release:	2
+Version:	0.31.0
+Release:	1
 Group:		System/Libraries
 License:	MIT
 Url:		https://pypi.org/project/httplib2/
@@ -20,7 +20,6 @@ A comprehensive HTTP client library that supports many features left
 out of other HTTP libraries.
 
 %files
-%doc python3/README
 %{py3_puresitedir}/%{module}-*
 %{py3_puresitedir}/%{module}/*
 

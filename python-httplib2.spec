@@ -20,7 +20,6 @@ A comprehensive HTTP client library that supports many features left
 out of other HTTP libraries.
 
 %files
-%doc python3/README
 %{py3_puresitedir}/%{module}-*
 %{py3_puresitedir}/%{module}/*
 
